@@ -1,0 +1,28 @@
+{
+  "name": "fony",
+  "version": "1.0.0",
+  "description": "A command line tool for generating mock data from a template",
+  "main": "src/index.js",
+  "bin": {
+    "fony": "src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/captainsafia/fony.git"
+  },
+  "keywords": [
+    "CLI",
+    "testing",
+    "mock"
+  ],
+  "author": "Safia Abdalla <safia@safia.rocks> (https://safia.rocks/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/captainsafia/fony/issues"
+  },
+  "homepage": "https://github.com/captainsafia/fony#readme",
+  "dependencies": {
+    "chance": "^1.0.6",
+    "commander": "^2.9.0"
+  }
+}
