@@ -1,8 +1,11 @@
-const Chance = require('chance');
+const Chance = require("chance");
 
 const chance = new Chance();
 
 function getValue(type) {
+  if (typeof type === "object" && !Array.isArray(type) && type != null) {
+    return createData(type);
+  }
   try {
     return chance[type]();
   } catch (exception) {
@@ -11,7 +14,7 @@ function getValue(type) {
 }
 
 function createData(template) {
-  const output = {}; 
+  const output = {};
   Object.keys(template).map(function(key, index) {
     output[key] = getValue(template[key]);
   });
