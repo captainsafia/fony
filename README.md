@@ -27,7 +27,6 @@ npm install --global fony
     -V, --version              output the version number
     -t, --template <template>  JSON template for data to be generated
     -c, --count [count]        The number of elements to create, defaults to 1
-    -j, --json                 Format the output as valid JSON, defaults to false
 
 ```
 

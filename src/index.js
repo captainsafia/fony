@@ -12,7 +12,6 @@ program
 program
   .option('-t, --template <template>', 'JSON template for data to be generated')
   .option('-c, --count [count]', 'The number of elements to create, defaults to 1', 1)
-  .option('-j, --json', 'Format the output as valid JSON, defaults to false', true)
   .parse(process.argv);
 
 var template;
@@ -22,8 +21,8 @@ try {
   return console.log(error);
 }
 
-function format(source, asJSON) {
-  return asJSON ? JSON.stringify(source, null, 2) : source;
+function format(source) {
+  return JSON.stringify(source, null, 2);
 }
 
 if (program.count > 1) {
@@ -31,7 +30,7 @@ if (program.count > 1) {
   for (var i = 0; i < program.count; i++) {
     output.push(createData(template));
   }
-  return console.log(format(output, program.json));
+  return console.log(format(output));
 } else {
-  return console.log(format(createData(template), program.json));
+  return console.log(format(createData(template)));
 }
