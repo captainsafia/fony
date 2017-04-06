@@ -1,6 +1,6 @@
 # fony
 
-fony is a **simple** command line tool that generates dummy JSON data from 
+fony is a **simple** command line tool that generates dummy JSON data from
 a provided template.
 
 The application utilizes [Chance.js](http://chancejs.com/) under the hood
@@ -27,6 +27,7 @@ npm install --global fony
     -V, --version              output the version number
     -t, --template <template>  JSON template for data to be generated
     -c, --count [count]        The number of elements to create, defaults to 1
+
 ```
 
 ![fony](https://cloud.githubusercontent.com/assets/1857993/24695518/c4ab67e8-19ab-11e7-98e3-330fa48a14d3.gif)

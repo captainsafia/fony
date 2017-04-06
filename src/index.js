@@ -21,12 +21,16 @@ try {
   return console.log(error);
 }
 
+function format(source) {
+  return JSON.stringify(source, null, 2);
+}
+
 if (program.count > 1) {
   var output = [];
   for (var i = 0; i < program.count; i++) {
     output.push(createData(template));
   }
-  return console.log(output);
+  return console.log(format(output));
 } else {
-  return console.log(createData(template));
+  return console.log(format(createData(template)));
 }
