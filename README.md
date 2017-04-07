@@ -18,6 +18,12 @@ npm install --global fony
 
 ## Usage
 
+Note that when using fony on Windows, you need to make sure to escape the quotes in the template string like so.
+
+```
+> fony -t "{\"name\": \"name\", \"age\": \"age\", \"address\": \"address\"}" -c 2
+```
+
 ```
   Usage: fony [options]
 
