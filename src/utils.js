@@ -2,8 +2,23 @@ const Chance = require("chance");
 
 const chance = new Chance();
 
+function getArrayValue(definition) {
+  var type = definition[0];
+  var count = definition[1];
+  if (typeof type === "string" && typeof count === "number" && count > 0) {
+    return new Array(count).fill(null).map(function() {
+      return getValue(type);
+    });
+  } else {
+    return [];
+  }
+}
+
 function getValue(type) {
-  if (typeof type === "object" && !Array.isArray(type) && type != null) {
+  if (Array.isArray(type) && type.length === 2) {
+    return getArrayValue(type);
+  }
+  if (typeof type === "object" && type != null) {
     return createData(type);
   }
   try {
