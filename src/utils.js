@@ -1,24 +1,31 @@
 const Chance = require("chance");
 
 const chance = new Chance();
+const chanceTypes = Object.keys(Object.getPrototypeOf(chance));
+
+function valid(type) {
+  return chanceTypes.indexOf(type) !== -1;
+}
 
 function getArrayValue(definition) {
-  var type = definition[0];
-  var count = definition[1];
-  if (typeof type === "string" && typeof count === "number" && count > 0) {
-    return new Array(count).fill(null).map(function() {
-      return getValue(type);
-    });
-  } else {
-    return [];
+  if (definition.length !== 2) {
+    return null;
   }
+  const type = definition[0];
+  const count = definition[1];
+  if (!valid(type) || typeof count !== "number" || count === 0) {
+    return null;
+  }
+  return new Array(count).fill(null).map(function() {
+    return getValue(type);
+  });
 }
 
 function getValue(type) {
-  if (Array.isArray(type) && type.length === 2) {
+  if (Array.isArray(type)) {
     return getArrayValue(type);
   }
-  if (typeof type === "object" && type != null) {
+  if (typeof type === "object" && !Array.isArray(type) && type != null) {
     return createData(type);
   }
   try {
