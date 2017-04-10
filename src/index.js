@@ -2,6 +2,7 @@
 'use strict';
 
 const program = require('commander');
+const fs = require('fs');
 
 const _version_ = require('../package.json').version;
 const createData = require('./utils');
@@ -11,12 +12,20 @@ program
 
 program
   .option('-t, --template <template>', 'JSON template for data to be generated')
+  .option('-f, --file <file>', 'JSON template for data to be generated')
   .option('-c, --count [count]', 'The number of elements to create, defaults to 1', 1)
   .parse(process.argv);
 
 var template;
 try {
-  template = JSON.parse(program.template);
+  if (program.template !== undefined) {
+    template = JSON.parse(program.template);
+  } else if (program.file !== undefined) {
+    template = JSON.parse(fs.readFileSync(program.file, 'utf8'));
+  } else {
+    console.log("Specify a template string or file (type 'fony -h')");
+    process.exit(1);
+  }
 } catch (error) {
   return console.log(error);
 }
