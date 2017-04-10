@@ -44,4 +44,30 @@ But Windows handles quotes on the command line differently, so be sure to escape
 fony -t "{\"name\": \"name\", \"age\": \"age\", \"address\": \"address\"}" -c 2
 ```
 
+## Niceties
+
+fony supports nested fixtures:
+
+```js
+$ fony -t '{"foo": {"bar": "name"}}'
+{
+  "foo": {
+    "bar": "Virgie Davidson"
+  }
+}
+```
+
+As well as arrays:
+
+```js
+$ fony -t '{"tags": ["word", 3]}'
+{
+  "tags": [
+    "oklu",
+    "odikabi",
+    "coan"
+  ]
+}
+```
+
 ![fony](https://cloud.githubusercontent.com/assets/1857993/24695518/c4ab67e8-19ab-11e7-98e3-330fa48a14d3.gif)
