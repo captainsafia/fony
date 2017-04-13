@@ -5,6 +5,7 @@ const program = require('commander');
 
 const _version_ = require('../package.json').version;
 const createData = require('./utils');
+const transform = require('./transform');
 
 program
   .version(_version_);
@@ -16,7 +17,7 @@ program
 
 var template;
 try {
-  template = JSON.parse(program.template);
+  template = eval(transform(program.template));
 } catch (error) {
   return console.log(error);
 }
